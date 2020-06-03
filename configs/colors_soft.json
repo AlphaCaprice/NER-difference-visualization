@@ -1,0 +1,68 @@
+[
+	{
+		"label": "2 GENERAL ENVIRONMENTAL REQUIREMENTS",
+		"number": "2",
+		"color": "#5B8A50",
+		"color_name": "general"
+	},
+ 	{
+	 	"label": "3 AIR EMISSION MANAGEMENT",
+	 	"number": "3",
+	 	"color": "#C5AC81",
+		"color_name": "air"
+ 	},
+	{
+		"label": "4 WATER MANAGEMENT",
+		"number": "4",
+		"color": "#62D7C4",
+		"color_name": "water"
+	},
+	{
+		"label": "5 WASTE MANAGEMENT",
+		"number": "5",
+		"color": "#56D85B",
+		"color_name": "waste"
+	},
+	{
+		"label": "6 CHEMICALS MANAGEMENT",
+		"number": "6",
+		"color": "#8C68BD",
+		"color_name": "chemicals"
+	},
+	{
+		"label": "7 HAZARDOUS MATERIALS TRANSPORT",
+		"number": "7",
+		"color": "#F99F1D",
+		"color_name": "hazardous"
+	},
+	{
+		"label": "8 SAFETY MANAGEMENT",
+		"number": "8",
+		"color": "#2F8EDE",
+		"color_name": "safety"
+	},
+	{
+		"label": "9 FACILITY TECHNICAL SAFETY",
+		"number": "9",
+		"color": "#E8D337",
+		"color_name": "facility"
+	},
+	{
+		"label": "10 EMERGENCY PREPAREDNESS",
+		"number": "10",
+		"color": "#D6514B",
+		"color_name": "emergency"
+	},
+	{
+		"label": "11 OCCUPATIONAL HEALTH",
+		"number": "11",
+		"color": "#E69FD4",
+		"color_name": "occupational"
+	},
+	{
+		"label": "12 PRODUCT MANAGEMENT",
+		"number": "12",
+		"color": "#C5D0D2",
+		"color_name": "product"
+	}
+]
