@@ -8,7 +8,7 @@ from machine_tagging.machine_tagging import find_entities
 from model.model import FlairNER
 from preprocessing.preprocessing import preprocess_file
 from utils.file_handlers import (clear_file, csv_write_row, csv_write_rows,
-                                 json_append, json_write)
+                                 json_append, json_write, json_load)
 from utils.metrics import MetricRecord, collect_metrics
 from utils.utils import load_displacy_options, create_table_view
 
@@ -29,6 +29,7 @@ if __name__ == '__main__':
     config.read("settings.ini")
 
     colors_path = config["paths"]["colors"]
+    entities_path = config["paths"]["entities"]
     model_path = args.model or config["paths"][f"{language}_model"]
 
     # output paths
@@ -50,13 +51,14 @@ if __name__ == '__main__':
     table_rows = []
 
     document_pages = preprocess_file(file_path)
+    entities = json_load(entities_path)
 
     for i, page in enumerate(tqdm(document_pages, desc="Pages")):
         for paragraph in tqdm(page, desc="Paragraphs", leave=False):
             if not paragraph:
                 continue
 
-            machine_record = find_entities(paragraph)
+            machine_record = find_entities(paragraph, entities)
             model_record = model.predict_paragraph(paragraph)
 
             machine_tagged.append(machine_record)

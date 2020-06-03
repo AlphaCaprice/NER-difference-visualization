@@ -1,17 +1,13 @@
 import re
 from typing import Dict, List
 
-from utils.file_handlers import json_load
 
-ENTITIES: Dict[str, List[str]] = json_load("configs/entity-lists-new.json")
-
-
-def find_entities(text: str) -> Dict:
+def find_entities(text: str, entities: Dict[str, List[str]]) -> Dict:
     """Find entities in text.
 
     Args:
         text: original text where to find entities
-
+        entities: names of entities
     Returns:
         dictionary in spacy format
     """
@@ -22,7 +18,7 @@ def find_entities(text: str) -> Dict:
     tagged_ents = {"text": text, "ents": []}
     index_ranges = []
 
-    for label, entities in ENTITIES.items():
+    for label, entities in entities.items():
         for entity in entities:
             entity_ranges = [(m.start(), m.end()) for m in
                              re.finditer(entity, text_lower)]
