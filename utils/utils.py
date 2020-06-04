@@ -3,7 +3,7 @@ from functools import lru_cache
 import pandas as pd
 
 from utils.file_handlers import json_load
-from utils.html_template import HTML, STYLE, SCRIPT
+from utils.html_template import HTML, SCRIPT, STYLE
 
 
 @lru_cache(maxsize=64)
@@ -35,8 +35,12 @@ def create_table_view(csv_path: str, html_path: str) -> None:
     """
     csv_ = pd.read_csv(csv_path)
 
-    html_table = csv_.to_html(classes=["table-bordered"], justify="center",
-                              table_id="custom_table", escape=False)
+    html_table = csv_.to_html(
+        classes=["table-bordered"],
+        justify="center",
+        table_id="custom_table",
+        escape=False,
+    )
 
     with open(html_path, "w") as file:
         html = HTML.format(table=html_table, script=SCRIPT, style=STYLE)

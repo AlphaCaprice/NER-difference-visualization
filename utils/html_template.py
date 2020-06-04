@@ -1,4 +1,4 @@
-HTML = '''
+HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +19,9 @@ HTML = '''
 </script>
 </body>
 </html>
-'''
+"""
 
-STYLE = '''
+STYLE = """
 tbody>tr>:nth-child(1),
 tbody>tr>:nth-child(3),
 tbody>tr>:nth-child(4),
@@ -41,10 +41,10 @@ tbody>tr>:nth-child(7)
 div.dataTables_filter input {
   width: 300px !important;
 }
-'''
+"""
 
-SCRIPT = '''
+SCRIPT = """
 $(document).ready(function() {
     $('#custom_table').DataTable();
 });
-'''
+"""

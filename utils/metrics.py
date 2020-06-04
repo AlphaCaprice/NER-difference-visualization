@@ -1,14 +1,17 @@
 from collections import namedtuple
 from typing import Dict, List
 
-
-MetricRecord = namedtuple("TableRecord",
-                          ['text',
-                           'machine_tagging_tp_amount',
-                           'model_fp_amount',
-                           'model_fn_amount',
-                           'model_fp_entities',
-                           'model_fn_entities'])
+MetricRecord = namedtuple(
+    "TableRecord",
+    [
+        "text",
+        "machine_tagging_tp_amount",
+        "model_fp_amount",
+        "model_fn_amount",
+        "model_fp_entities",
+        "model_fn_entities",
+    ],
+)
 
 
 def collect_metrics(machine_record: Dict[str, List[Dict]],

@@ -1,7 +1,6 @@
 import csv
 import json
-
-from typing import Iterable, Union, List, Dict
+from typing import Dict, Iterable, List, Union
 
 
 def csv_write_row(filename: str, row: Iterable, mode="a+") -> None:
@@ -14,8 +13,9 @@ def csv_write_row(filename: str, row: Iterable, mode="a+") -> None:
 
     """
     with open(filename, mode, newline="") as file:
-        writer = csv.writer(file, delimiter=',', quotechar='"',
-                            quoting=csv.QUOTE_MINIMAL)
+        writer = csv.writer(
+            file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
+        )
         writer.writerow(row)
 
 
@@ -29,8 +29,9 @@ def csv_write_rows(filename: str, rows: Iterable[Iterable], mode="a+") -> None:
 
     """
     with open(filename, mode, newline="") as file:
-        writer = csv.writer(file, delimiter=',', quotechar='"',
-                            quoting=csv.QUOTE_MINIMAL)
+        writer = csv.writer(
+            file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
+        )
         writer.writerows(rows)
 
 

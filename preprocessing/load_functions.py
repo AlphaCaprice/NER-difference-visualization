@@ -1,5 +1,4 @@
-from pathlib import Path
-from typing import List, Union, BinaryIO
+from typing import List
 
 import tika
 from bs4 import BeautifulSoup
