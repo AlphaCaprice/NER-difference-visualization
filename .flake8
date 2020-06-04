@@ -1,0 +1,5 @@
+[flake8]
+ignore = D203
+exclude = .git,__pycache__,docs/source/conf.py,old,build,dist
+import-order-style = google
+max-line-length = 88

@@ -29,7 +29,9 @@ tbody>tr>:nth-child(5),
 tbody>tr>:nth-child(6),
 tbody>tr>:nth-child(7)
 {
- text-align:center;
+  text-align:center;
+  vertical-align: top;
+  padding: 10px 0px 0px 0px;
 }
 
 #custom_table_wrapper {

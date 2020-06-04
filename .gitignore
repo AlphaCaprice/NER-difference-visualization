@@ -1,6 +1,6 @@
-configs/entity-lists-new.json
 venv/
 output/
 .idea/
 __pycache__/
 .ipynb_checkpoints
+/configs/entity-lists.json
