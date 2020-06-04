@@ -22,7 +22,7 @@ From this example we can figure out, that model have tagged new entity - "Google
 all original entities ("Sebastian Thrun, 2007), because number of fn is zero.
 
 ## How it works
-![picture](examples/NER-difference2.png)
+![picture](examples/NER-difference2.png)<br>
 Simple scheme roughly describes program logic
 
 ## Usage
