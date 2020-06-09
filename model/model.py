@@ -111,9 +111,8 @@ class FlairNER:
             spacy formated dict with entities
         """
         # mismatch if there are empty sentences
-        sentences = [
-            Sentence(x, use_tokenizer=self.tokenizer) for x in split_single(paragraph)
-        ]
+        sentences = [Sentence(x, use_tokenizer=self.tokenizer) for x in
+                     split_single(paragraph) if x]
         # move to separate function
         if self.max_length:
             sentences = self._split_long_sentences(sentences)

@@ -3,4 +3,6 @@ output/
 .idea/
 __pycache__/
 .ipynb_checkpoints
-/configs/entity-lists.json
+/configs/fr-entity-lists.json
+/configs/es-entity-lists.json
+/configs/en-entity-lists.json

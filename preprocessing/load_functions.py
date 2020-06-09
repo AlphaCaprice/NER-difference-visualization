@@ -1,3 +1,4 @@
+import requests
 from typing import List
 
 import tika
@@ -38,6 +39,8 @@ def paginate(list_of_paragraphs: list, max_page_length=5000) -> List[List]:
     one_page = []
     page_len = 0
     for par in list_of_paragraphs:
+        if not par or par == "\t":
+            continue
         if page_len >= max_page_length:
             pages.append(one_page)
             one_page = []
@@ -115,8 +118,12 @@ def load_html(file_path: str) -> List[List]:
     Returns:
         list of pages
     """
-    with open(file_path, "r") as file:
-        raw_html = file.read()
+    if file_path.startswith(("http", "https")):
+        file = requests.get(file_path)
+        raw_html = file.content
+    else:
+        with open(file_path, "r") as file:
+            raw_html = file.read()
     soup = BeautifulSoup(raw_html, features="lxml")
     # replace non-breaking space
     soup = soup.body.get_text(strip=False).replace("\xa0", " ")

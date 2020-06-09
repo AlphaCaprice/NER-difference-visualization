@@ -7,9 +7,12 @@ ALLOWED_EXTENSIONS = {"txt", "pdf", "docx", "doc", "html", "xml", "htm", "xht"}
 
 
 def preprocess_file(file_path: str) -> List[List]:
-    ext = file_path.rsplit(".", 1)[1]
+    if file_path.startswith(("http", "https")):
+        ext = "html"
+    else:
+        ext = file_path.rsplit(".", 1)[1]
     if ext not in ALLOWED_EXTENSIONS:
-        raise NameError
+        raise NameError(f"Wrong file extension: {file_path}.")
 
     # Preprocessed text
     load_function = choose_load_function(ext)

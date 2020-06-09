@@ -58,24 +58,38 @@ Example of colors json format is in configs folder.
 Tool has command line interface. Available arguments: <br>
 Type `python main.py --help` to get this information.
 ```buildoutcfg
-usage: main.py [-h] [-m MODEL] [-d DEST] language file
+usage: main.py [-h] [-m MODEL] [-d DEST]
+               (--file FILE | --folder FOLDER | --link LINK | --links LINKS)
+               language
 
 positional arguments:
-  language              Two-letter abbreviation of language name (en, fr, zh).
-  file                  Path to file for processing
+  language              two-letter abbreviation of language name (en, fr, zh).
 
 optional arguments:
   -h, --help            show this help message and exit
   -m MODEL, --model MODEL
                         Name of model to use
-  -d DEST, --destination DEST
-                        Where to save data
-
+  -d DEST, --dest DEST  Where to save data
+  --file FILE           path to file for processing
+  --folder FOLDER       path to folder with valid files for processing
+  --link LINK           url to file in the Internet
+  --links LINKS         path to txt file that contains links to html files in
+                        the Internet; links must be split by new line.
 ```
-For example <br>
-`python main.py en /home/user/data/test-data.pdf` <br>
-creates default <b>output</b> directory in project structure after file processing with 3 output files:
+Note that you can use only one of the available options per execution:
+* --file - process only one file, available extensions: `txt, pdf, docx, doc, html, xml, htm, xht`
+* --folder - process all files in given folder
+* --link - download and process file from the Internet
+* --links - process multiple files from the Internet
+
+Examples <br>
+`python main.py --folder /home/user/data/test-data.pdf en` <br>
+`python main.py --links links.txt --model model.pt es ` <br>
+`python main.py --file fr_file.docx --dest /home/data/fr_output fr ` <br>
+
+Output folder contains 4 output files:
 * rule_based_predictions.json - rule based tagged entities in visualizable [displacy format](https://spacy.io/usage/visualizers#manual-usage)
 * model_predictions.json - the same output as above but for model tagging
 * stat.html - html file with table as in example
+* stat.csv - same table but in csv format
 
