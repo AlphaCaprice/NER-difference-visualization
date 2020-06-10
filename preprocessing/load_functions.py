@@ -1,7 +1,10 @@
 import requests
 from typing import List
+from urllib.parse import urlparse, unquote
+
 
 import tika
+import wikipedia
 from bs4 import BeautifulSoup
 from docx import Document
 from tika import parser
@@ -119,14 +122,26 @@ def load_html(file_path: str) -> List[List]:
         list of pages
     """
     if file_path.startswith(("http", "https")):
-        file = requests.get(file_path)
-        raw_html = file.content
+        if "wikipedia.org" in file_path:
+            parsed_url = urlparse(unquote(file_path))
+            lang = parsed_url.hostname.split(".", 1)[0]
+            article_name = parsed_url.path.rsplit("/", 1)[-1]
+            wikipedia.set_lang(lang)
+            page = wikipedia.page(article_name)
+            text = page.content
+            return paginate(text.split("\n"))
+        else:
+            file = requests.get(file_path)
+            raw_html = file.content
     else:
         with open(file_path, "r") as file:
             raw_html = file.read()
+
     soup = BeautifulSoup(raw_html, features="lxml")
+    [s.extract() for s in
+     soup(['style', 'script', 'head', 'title', 'meta', '[document]'])]
     # replace non-breaking space
-    soup = soup.body.get_text(strip=False).replace("\xa0", " ")
+    soup = soup.get_text(strip=False).replace("\xa0", " ")
     lines = [line.strip() for line in soup.splitlines() if line.strip()]
     return paginate(lines)
 
